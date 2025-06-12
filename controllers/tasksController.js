@@ -1,5 +1,10 @@
-const pool = require('../config/db');
+//const pool = require('../config/db');
+const { Pool } = require('pg');
 
+const pool = new Pool({
+  connectionString: 'postgresql://neondb_owner:npg_Q8lOCF0UtBKn@ep-spring-bonus-a8ki0nig-pooler.eastus2.azure.neon.tech/neondb?sslmode=require', // Add in .env
+  ssl: { rejectUnauthorized: false },
+});
 // CREATE: Add a new task
 const createTask = async (req, res) => {
     const { task, userId } = req.body;
